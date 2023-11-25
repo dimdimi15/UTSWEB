@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="../style/regis.css">
+</head>
+
+<body>
+    <main id="register-holder">
+        <h1 id="register-header">REGISTER</h1>
+        <form id="register-form" action="../login/login.html" onsubmit="return validateForm()" method="post">
+            <input type="text" name="username" class="register-form-field" placeholder="username">
+            <input type="password" name="password" class="register-form-field" placeholder="password">
+            <button type="submit" value="Register">Register</button>
+            <p>Sudah punya akun ?
+                <a href="../login/index.html">Login disini</a>
+            </p>
+        </form>
+    </main>
+</body>
+
+</html>
