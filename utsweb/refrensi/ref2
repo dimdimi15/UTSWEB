@@ -1,0 +1,51 @@
+<?php
+require_once '../koneksi/koneksi.php';
+//tambah barang
+//menagkap atau upload data
+if(!empty($_POST['nama_barang'])){
+    $nama_barang = $_POST['nama_barang'];
+    $harga = $_POST['harga'];
+    $stok = $_POST['stok'];
+    $crud_name = $_POST['file']['name'];
+    $crud_tmp= $_POST['file']['tmp'];
+
+    //array
+    $data[] = $nama_barang;
+    $data[] = $harga;
+    $data[] = $stok;
+    $data[] = $crud_name;
+    $data[] = $crud_tmp;
+
+    //simpan data barang
+    
+    
+}if (!empty($_POST['id'])) {  
+    try {
+        
+        $sql = 'INSER INTO `produk` (`nama_barang`,`harga`,`stok`)VALUES (?, ?, ?, ?, ?)';
+        $qonnect = $database_connection->prepare($sql);
+        $qonnect->execute([$nama_barang, $harga, $stok, 'crud/'. $_POST['id']]);
+
+        echo "data berhasil ditambah";
+    } catch (PDOException $err) {
+        die("error". $err->getMessage());
+    }
+}else{
+    try {
+        
+        $sql = 'UPDATE `produk` SET `nama_barang`= ?, `harga`= ?, `stok`= ?, `crud`= ?, WHERE id = ?,';
+        $qonnect = $database_connection->prepare($sql);
+        $qonnect->execute([$nama_barang, $harga, $stok, 'crud/'. $_POST['id']]);
+
+        echo "data update";
+    } catch (PDOException $err) {
+        die("error". $err->getMessage());
+    }
+
+
+}
+
+
+    
+
+?>
